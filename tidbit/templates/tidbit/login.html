@@ -1,0 +1,44 @@
+{% extends "tidbit/base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="container">
+	<h1>Tidbit: Just Words</h1>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 center-block login" style="float:none">
+			<form action="{% url 'login_account' %}" method="get">
+				{% csrf_token %}
+				<label for="username">Username: </label>
+				<input id="username" type="text" name="username">
+				<label for="password">Password: </label>
+				<input id="password" type="password" name="password">
+				<input type="submit" value="Log In">
+			</form>
+		</div>
+	</div>
+
+	<p></p>
+	<p></p>
+	<p></p>
+
+	<div class="row">
+		<div class="col-md-6 center-block login" style="float:none">
+			<h5>Sign up for Tidbit!</h5>
+			<form action="{% url 'new_user' %}" method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+				{{ form }}
+				<label id="pic" for="picture">Upload Profile Picture</label>
+				<input id="picture" type="file" name="picture" accept="image/*">
+				<div>
+					<input type="submit" value="Create Account">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

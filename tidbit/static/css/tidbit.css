@@ -1,0 +1,108 @@
+body {
+	word-wrap: break-word;
+}
+
+.navbar-brand {
+	color: #fffff0;
+	font-family: 'Lobster', cursive;
+}
+
+.navbar-nav {
+	font-family: 'Suez One', serif;
+}
+
+.col-md-9 {
+	text-align: center;
+}
+
+h3, h5 {
+	font-family: 'Suez One', serif;
+	color: #967BB6;
+	text-align: center;
+}
+
+h1 {
+	font-family: 'Lobster', cursive;
+	color: #967BB6;
+	text-align: center;
+}
+
+footer {
+	color: gray;
+	font-size: 10px;
+	text-align: center;
+}
+
+footer a {
+	color: gray;
+}
+
+.glyphicon {
+	font-size: 7px;
+}
+
+p {
+	font-family: 'David Libre', serif;
+}
+
+
+.navigate {
+	color: #fffff0;
+}
+
+.col-md-6 {
+	text-align: center;
+	border-color: #967BB6;
+	border-style: solid;
+	border-radius: 5px;
+	padding-top: 5px;
+}
+
+.user {
+	border: none;
+}
+
+.row {
+	margin: 2px;
+}
+
+input[type=submit] {
+	width: auto;
+	margin: 5px;
+	border-radius: 5px;
+	border: none;
+	background-color: #967BB6;
+	color: #fffff0; 
+	font-family: 'Suez One', serif;
+}
+
+input[type=file] {
+	display: none;
+}
+
+#pic {
+	border-style: solid;
+	border-radius: 5px;
+	color: #967BB6;
+	padding: 2px;
+	margin: 5px;
+}
+
+input {
+	width: 100%;
+}
+
+#mainpic {
+	max-height: 75px;
+	max-width: 75px;
+}
+
+img { 
+	max-height: 50px; 
+	max-width: 50px;
+	border-style: solid;
+	border-radius: 3px;
+	border-width: 2px;
+	border-color: #967BB6; 
+}
+

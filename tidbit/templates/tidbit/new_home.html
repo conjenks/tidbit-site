@@ -1,0 +1,64 @@
+{% load staticfiles %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Tidbit: A Twitter Clone</title>
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="{% static 'css/tidbit.css' %}">
+
+  <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-light" style="background-color: #967BB6;">
+    <a class="navbar-brand" href="#">Tidbit</a>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 center-block" style="float:none">
+        <img src="/static/{{ user.profile.picture }}"/>
+
+        <p>{{user.first_name}} {{user.last_name}}</p>
+        <form action="/tidbit/new_tidbit/" method="post">
+          {% csrf_token %}
+          <input id="new_tidbit" type="text" name="new_tidbit" placeholder="Post a Tidbit" width="100%">
+        </form>
+
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container">
+    {% for tidbit in tidbits reversed %}
+    <div class="row">
+      <div class="tidbit">
+      <div class="col-md-6 center-block" style="float:none">
+        <div class="row">
+          <div class="col-md-3">
+            <img src="/static/{{ tidbit.user.profile.picture }}"/>
+            <p>{{tidbit.user.first_name}} {{tidbit.user.last_name}}</p>
+          </div>
+          <div class="col-md-9">
+            <p>{{ tidbit.text }}</p>
+            <p>{{ tidbit.pub_date }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+      {% endfor %}
+  </div>
+
+
+
+</body>
+</html>

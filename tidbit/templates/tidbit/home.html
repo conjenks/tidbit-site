@@ -1,0 +1,59 @@
+{% extends "tidbit/base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<nav class="navbar navbar-default" style="background-color: #967BB6;">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="{% url 'home' %}">Tidbit</a>
+			</div>
+			
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li><a class="navigate" href="{% url 'profile' request.user.username %}">My Profile</a></li> 
+					<li><a class="navigate" href="{% url 'settings' %}">Settings</a></li>
+					<li><a class="navigate" href="{% url 'logout' %}">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</nav>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 center-block user" style="float:none">
+			<img id="mainpic" src="{{ user.profile.picture }}"/>
+			<h3>{{user.first_name}} {{user.last_name}}</h3>
+			<form action="{% url 'new_tidbit' %}" method="post" autocomplete="off">
+				{% csrf_token %}
+				<label for="new_tidbit">Post a Tidbit</label>
+				<input id="new_tidbit" type="text" name="new_tidbit" width="100%">
+			</form>
+			<p>Latest Tidbits:</p>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	{% for tidbit in tidbits reversed %}
+	<div class="row">
+		<div class="col-md-6 center-block" style="float:none">
+			<a href="{% url 'profile' tidbit.user.username %}">
+				<img src="{{ tidbit.user.profile.picture.url }}"/>
+			</a>
+			<h5>{{tidbit.user.first_name}} {{tidbit.user.last_name}}</h5>
+			<p>{{tidbit.text}}</p>
+			<footer>{{tidbit.pub_date}} EST</footer>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+
+{% endblock %}
+

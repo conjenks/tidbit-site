@@ -1,0 +1,45 @@
+{% extends "tidbit/base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<nav class="navbar navbar-default" style="background-color: #967BB6;">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="{% url 'home' %}">Tidbit</a>
+			</div>
+			
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a class="navigate" href="{% url 'profile' request.user.username %}">My Profile</a></li> 
+					<li><a class="navigate" href="{% url 'settings' %}">Settings</a></li>
+					<li><a class="navigate" href="{% url 'logout' %}">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</nav>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 center-block" style="float:none">
+				<form action="{% url 'delete_account' %}" method="post">
+					{% csrf_token %}
+					<p>Do you want to delete your account?</p>
+					<input type="radio" name="delete" value="no" checked> No<br>
+					<input type="radio" name="delete" value="yes"> Yes<br>
+					<div>
+						<input type="submit" value="Delete">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	{% endblock %}

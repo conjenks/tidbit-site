@@ -67,15 +67,6 @@ def new_user(request):
 		user.last_name = last_name
 		user.save()
 
-		if bool(request.FILES.get('picture', False)):
-			pic = request.FILES.get('picture')
-			profile = Profile.objects.create(user=user)
-			profile.picture = pic
-			profile.save()
-		else:
-			user.delete()
-			return HttpResponse("Please go back and upload a profile picture.")
-
 		user = authenticate(username=username, password=password)
 		login(request, user)
 		return redirect('home')
